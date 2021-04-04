@@ -26,7 +26,7 @@ type Queja struct { //datos
 func main() {
 	fmt.Println("Iniciando ...")
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017") //URI
+	clientOptions := options.Client().ApplyURI("mongodb+srv://root:rootmaster@clusterprueba.0qn4w.mongodb.net/quejasdb?retryWrites=true&w=majority") //URI
 	client, _ = mongo.Connect(ctx, clientOptions)
 	router := mux.NewRouter()
 	router.HandleFunc("/queja", CreateQuejaEndpoint).Methods("POST") //rutas
