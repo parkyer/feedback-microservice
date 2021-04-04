@@ -1,0 +1,131 @@
+---
+openapi: 3.0.0
+info:
+  title: MyquejasApi
+  termsOfService: https:localhost/terms/
+  contact:
+    email: emmendep@una.edu.co
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/ElkinMauricio/quejasApi/1.0.0
+  description: SwaggerHub API Auto Mocking
+paths:
+  /queja:
+    post:
+      description: permite crear una queja
+      parameters:
+      - name: Queja_user
+        in: query
+        description: queja del usuario
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: Me cobraron mas de lo establecido
+      - name: Calificacion
+        in: query
+        description: calificacion del Parkyer
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: number
+          example: 3.4
+      - name: Parkyer
+        in: query
+        description: ID del Parkyer
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          example: 1000
+      responses:
+        "200":
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200'
+        "404":
+          description: Page Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+                example: '{"message":"ERROR 404. PAGE NOT FOUND"}'
+  /queja/{ID}:
+    get:
+      description: obtener informacion de una queja en especifico
+      parameters:
+      - name: ID
+        in: path
+        description: ID queja del usuario
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 88778f7f7837dkd
+      responses:
+        "200":
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_1'
+        "404":
+          description: Page Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+                example: '{}'
+  /quejas:
+    get:
+      description: permite traer todas las quejas
+      responses:
+        "200":
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/inline_response_200_1'
+        "404":
+          description: Page Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+                example: '{"message":"ERROR 404. PAGE NOT FOUND"}'
+components:
+  schemas:
+    inline_response_200:
+      properties:
+        ID:
+          type: string
+          example: 88778f7f7837dkd
+    inline_response_200_1:
+      properties:
+        ID:
+          type: string
+          example: 88778f7f7837dkd
+        Queja_user:
+          type: string
+          example: me rompieron el vidro
+        Calificacion:
+          type: number
+          example: 1.5
+        Parkyer:
+          type: integer
+          example: 883

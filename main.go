@@ -20,7 +20,7 @@ type Queja struct { //datos
 	ID           primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	Queja_user   string             `json:"queja_user,omitempty" bson:"queja_user,omitempty"`
 	Calificacion float64            `json:"calificacion,omitempty" bson:"calificacion,omitempty" `
-	Parkyer      int                `json:"parkyer,omitempty" bson:"parkyer,omitempty" `
+	ID_Parkyer   int                `json:"id_parkyer,omitempty" bson:"id_parkyer,omitempty" `
 }
 
 func main() {
