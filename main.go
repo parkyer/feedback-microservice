@@ -32,7 +32,7 @@ func main() {
 	router.HandleFunc("/queja", CreateQuejaEndpoint).Methods("POST") //rutas
 	router.HandleFunc("/quejas", GetQuejasEndpoint).Methods("GET")
 	router.HandleFunc("/queja/{id}", GetQuejaEndpoint).Methods("GET")
-	http.ListenAndServe(":4000", router) //puerto
+	http.ListenAndServe(":4001", router) //puerto
 }
 
 func CreateQuejaEndpoint(response http.ResponseWriter, request *http.Request) {
